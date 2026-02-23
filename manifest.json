@@ -3,6 +3,7 @@
   "name": "DualSense Controller",
   "description": "Monitors battery level and configures DualSense settings.",
   "version": "1.0.0",
+  "author": "Sullaimon",
   "entryPoints": {
     "main": "Main.qml",
     "barWidget": "BarWidget.qml"

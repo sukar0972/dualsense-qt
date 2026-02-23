@@ -3,12 +3,13 @@ import QtQuick.Controls
 import QtQuick.Layouts
 import Quickshell
 import Quickshell.Io
+import qs.Services.UI
 
 Rectangle {
     id: panelSettings
     width: 300
     height: 400
-    color: Theme.surface // Uses Material Design 3 surface color
+    color: Color.mSurface // Uses Material Design 3 surface color
     radius: 12
 
     Process {
@@ -29,7 +30,7 @@ Rectangle {
 
         Text {
             text: "DualSense Settings"
-            color: Theme.on_surface
+            color: Color.mOnSurface
             font.pixelSize: 18
             font.bold: true
         }
@@ -37,7 +38,7 @@ Rectangle {
         // Trigger Settings
         Text {
             text: "Trigger Modes"
-            color: Theme.on_surface_variant
+            color: Color.mOnSurfaceVariant
         }
         RowLayout {
             ComboBox {
@@ -59,7 +60,7 @@ Rectangle {
         // Lightbar Settings
         Text {
             text: "Lightbar Color (RGB)"
-            color: Theme.on_surface_variant
+            color: Color.mOnSurfaceVariant
         }
         RowLayout {
             SpinBox { id: rBox; from: 0; to: 255; value: 0 }
@@ -76,7 +77,7 @@ Rectangle {
         // Player LEDs
         Text {
             text: "Player LEDs (1-5)"
-            color: Theme.on_surface_variant
+            color: Color.mOnSurfaceVariant
         }
         RowLayout {
             Repeater {

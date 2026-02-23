@@ -2,6 +2,7 @@ import QtQuick
 import QtQuick.Layouts
 import Quickshell
 import Quickshell.Io
+import qs.Services.UI
 
 Item {
     id: barWidget
@@ -14,9 +15,11 @@ Item {
         id: batteryPoller
         command: ["dualsensectl", "battery"]
         running: false
-        onStdoutLinesChanged: {
-            if (stdoutLines.length > 0 && stdoutLines[0] !== "") {
-                batteryLevel = stdoutLines[0]
+        stdout: StdioCollector {}
+
+        onExited: exitCode => {
+            if (exitCode === 0 && stdout.text.trim()) {
+                batteryLevel = stdout.text.trim()
             }
         }
     }
@@ -39,13 +42,13 @@ Item {
         Text {
             // Gamepad icon (using Nerd Fonts or similar)
             text: "\uf11b" // FontAwesome gamepad icon as placeholder
-            color: Theme.on_surface // Uses Noctalia Theme Material Design 3 property
+            color: Color.mOnSurface // Uses Noctalia Theme Material Design 3 property
             font.pixelSize: 16
         }
 
         Text {
             text: barWidget.batteryLevel
-            color: Theme.on_surface
+            color: Color.mOnSurface
             font.pixelSize: 14
         }
     }
